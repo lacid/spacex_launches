@@ -1,4 +1,5 @@
 // all graphql stuff goes here; graphql object types
+// github.com/r-spacex/SpaceX-API see docs launches and rockets
 
 const axios = require('axios');
 
@@ -20,7 +21,9 @@ const LaunchType = new GraphQLObjectType({
     launch_year: { type: GraphQLString },
     launch_date_local: { type: GraphQLString },
     launch_success: { type: GraphQLBoolean },
-    rocket: { type: RocketType }
+    upcoming: { type: GraphQLBoolean },
+    is_tentative: { type: GraphQLBoolean },
+    rocket: { type: RocketType } // relationship with below schema
   })
 });
 
@@ -34,7 +37,8 @@ const RocketType = new GraphQLObjectType({
   })
 });
 
-// Root Query  - kinda endpoints that have resolvers that resolve our data
+// Root Query - kinda endpoints, that have resolvers, that resolve our data
+// http://localhost:5000/graphql test query eg: { launches { flight_number, misson_name }}
 const RootQuery = new GraphQLObjectType({
   name: 'RootQueryType',
   fields: {
