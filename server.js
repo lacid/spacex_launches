@@ -1,6 +1,5 @@
-// youtube.com/playlist?list=PLillGF-RfqbZrjw48EXLdM4dsOhURCLZx // no mutations here, no crud
+// no mutations here, no crud
 // github.com/graphql/express-graphql
-
 const express = require('express');
 const graphqlHTTP = require('express-graphql');
 const cors = require('cors');
@@ -20,7 +19,6 @@ app.use(
 );
 
 app.use(express.static('public'));
-
 app.get('*', (req, res) => {
   // redirect any /graphql route hit to index.html in public folder
   res.sendFile(path.resolve(__dirname, 'public', 'index.html'));
